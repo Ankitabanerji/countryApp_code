@@ -1,0 +1,32 @@
+<div class="container-fluid header-wrapper mb-5">
+  <!-- logo -->
+  <div class="row justify-content-center ">
+    <div class=" col-9 col-md-5 p-2">
+      <a [routerLink]="['/region']"> <img src="../assets/image/logo.png" alt="" class="w-100"></a>
+    </div>
+  </div>
+  
+</div>
+
+<!-- search-icon -->
+<div class="search-icon-wrapper">
+  <div class="d-flex flex-row align-items-center">
+    <div class="p-2 search-icon" (click)="toggleSearch()">
+      <i class="fa fa-search font-weight-bold" aria-hidden="true"></i>
+    </div>
+    <div class="p-1 search-box" *ngIf="showSearchBox">
+      <input type="text" [value]="searchByCountry" (focusout)="hideList()" (focus)="showList()"
+        (keyup)="getSearchValue($event)" placeholder="search by country name">
+      <div *ngIf="showCountryList" class="country-list">
+        <ul class="p-0 m-0">
+          <li class="py-2 px-3 clickable-item" style="cursor:pointer"
+            *ngFor="let r of autoComplete(countryArray,searchBy)" (click)="searchCountry(r)">{{r}}</li>
+          <li class="py-2 px-3" *ngIf="autoComplete(countryArray,searchBy).length === 0">No Country Found</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!--  -->
+</div>
+
+<router-outlet></router-outlet>

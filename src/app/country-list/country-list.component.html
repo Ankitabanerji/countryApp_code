@@ -1,0 +1,58 @@
+<div class="container-fluid allCountries-wrapper">
+  <!-- heading -->
+  <div class="row" *ngIf="type=='region'">
+    <div class="col-12 text-center  allCountries-heading">
+      Countries of {{pname | uppercase}}
+    </div>
+  </div>
+  <div class="row" *ngIf="type=='currency'">
+    <div class="col-12 text-center font-weight-bold allCountries-heading">
+      Countries having Currency {{pname| uppercase}}
+    </div>
+  </div>
+  <div class="row" *ngIf="type=='lang'">
+    <div class="col-12 text-center font-weight-bold allCountries-heading">
+      Countries having Language {{pname | uppercase}}
+    </div>
+  </div>
+
+  <!-- back -->
+  <app-back-button class="mb-2"></app-back-button>
+
+  <!-- loader -->
+  <app-loader *ngIf="!countriesFound"></app-loader>
+
+  <!-- Content -->
+  <div class="row mt-5 justify-content-center" *ngIf="countriesFound">
+    <div class="col-10">
+      <div class="card-columns mx-4" *ngIf="countryData">
+        <div class="card countrycard" *ngFor="let x of countryData">
+          <img class="card-img-top" [src]="x.flag" alt="Card image cap" (click)="selectCountry(x.name)">
+          <div class="card-body body p-2">
+            <h5 class="card-title country-title pt-2 text-center font-weight-bold">{{x.name}}</h5>
+            <p class="card-text mb-2"><b>Capital: </b> {{x.capital}}</p>
+            <p class="card-text mb-2"><b>Currency: </b>
+              <span class="currency" *ngFor="let x1 of x.currencies;let last=last;"
+                (click)="filterCountries(x1.code,'currency')">
+                <span *ngIf="x1.name != null && x1.code!='(none)'">{{x1.name}} ({{x1.code}}) {{last? '' : ','}}</span>
+              </span>
+            </p>
+            <p class="card-text mb-2"><b>Languages: </b>
+              <span [ngClass]="{'languageNotfound': x2.iso639_1 == null}" class="language"
+                *ngFor="let x2 of x.languages;let last=last" (click)="filterCountries(x2.iso639_1,'lang')">
+                {{x2.name}} <span *ngIf="x2.iso639_1">({{x2.iso639_1}})</span>{{last ? '' : ', '}}
+              </span>
+            </p>
+            <p class="card-text mb-2"><b>Timezone: </b> {{x.timezones}}</p>
+            <p class="text-right pr-2 readmore mt-4" (click)="selectCountry(x.name)">
+              <span class="p-1">
+                Read More <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

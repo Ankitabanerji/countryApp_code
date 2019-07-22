@@ -1,0 +1,99 @@
+.singlecountry-wrapper {
+    .content-wrapper {
+      color: white;
+      .content {
+        background: rgba(75, 160, 206, 0.42);
+        border-radius: 10px;
+        overflow: hidden;
+        .flag-wrapper {
+          .flag-img {
+            background: transparent;
+            border: none;
+            .card-body {
+              font-size: 1.2rem;
+            }
+          }
+        }
+        .content-info {
+          background: rgba(75, 160, 206, 0.56);
+          .heading {
+            border-bottom: 1px solid white;
+            h1 {
+              font-family: 'Special Elite', cursive;
+            }
+          }
+          .info {
+            font-size: 1.2rem;
+            .currency {
+              color: rgb(253, 216, 5);
+              &:hover {
+                color: white;
+                cursor: pointer;
+                text-decoration: underline;
+              }
+            }
+            .language {
+              color: rgb(253, 216, 5);
+              &:hover {
+                color: white;
+                cursor: pointer;
+                text-decoration: underline;
+              }
+            }
+            .languageNotfound:hover {
+              cursor: default;
+              text-decoration: none !important;
+            }
+          }
+        }
+        &:hover {
+          box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.6), 0 6px 20px 0 rgba(255, 255, 255, 0.6);
+        }
+      }
+    }
+  }
+    
+  .nodatafound-wrapper {
+      .nodata-info {
+        font-size: 2rem;
+        color: white;
+        ul {
+          list-style: none;
+          font-size: 1.25rem;
+        }
+      }
+  }
+    
+  @media screen and (max-width:960px) {
+    .nodatafound-wrapper {
+      .nodata-info {
+        font-size: 1.25rem;
+      }
+    }
+  }
+    
+  @media screen and (max-width:540px) {
+    .nodatafound-wrapper {
+      .nodata-info {
+        font-size: 1rem;
+        ul {
+          font-size: 1rem;
+        }
+      }
+    }
+    .content-wrapper {
+      .content {
+        .flag-img {
+          .card-body {
+            font-size: 1rem;
+          }
+        }
+        .content-info {
+          .info p {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+  

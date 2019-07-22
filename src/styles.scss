@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css?family=Allura|Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Special+Elite&display=swap');
+* {
+    box-sizing: border-box;
+}
+:root {  font-size: 16px; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family:  'Josefin Sans', sans-serif!important;
+    background: url(./assets/image/background_img.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.header-wrapper {
+    .heading-title {
+        color: white;
+        font-size: 2rem;
+    }
+}
+.search-icon-wrapper {
+    position:fixed;right:0;top:10%;z-index:1;
+    .search-icon {
+        background:white;
+        border-top-left-radius:50%;
+        border-bottom-left-radius:50%;
+        cursor: pointer;
+        i {
+            color: blue
+        }
+    }
+    .search-box {
+        input {
+            width:192px;
+            border:none;
+        }
+        .country-list {
+            z-index:1;
+            position:absolute;
+            width:100%;
+            background:white;
+            max-width:192px;
+            max-height:102px;
+            overflow:auto;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            ul {
+                list-style: none;
+                .clickable-item:hover {
+                    background: rgba(75, 160, 206, 0.56);
+                    
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,24 @@
+.region-list {
+    .region-name {
+      font-family: 'Special Elite', cursive;
+      color:white;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    .region-name:hover {
+      font-size: 1.4rem;
+    }
+    .region-image:hover {
+      cursor: pointer;
+    }
+  }
+  @media screen and (max-width:540px){
+    .region-list {
+      .region-name {
+        font-size: 1rem;
+      }
+      .region-name:hover {
+        font-size:1.2rem; 
+      }
+    }
+  }

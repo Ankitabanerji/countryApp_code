@@ -1,0 +1,83 @@
+<!-- If Data Found -->
+<div class="container-fluid" class="singlecountry-wrapper" *ngIf="singleCountryData.length">
+
+  <!-- back -->
+  <app-back-button class="mb-2"></app-back-button>
+  <!-- content -->
+  <div class="row content-wrapper w-100 justify-content-center mx-0 mb-5" *ngFor="let data of singleCountryData">
+    <div class="col-9 col-md-7 content">
+      <div class="row">
+        <!-- Flag Data -->
+        <div class="col-lg-6 col-12 p-4 flag-wrapper">
+          <div class="card flag-img">
+            <img class="card-img-top" [src]="data.flag" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text text-justify">
+                {{data.name}}
+                <span *ngIf="data.altSpellings.length"> (also know as
+                  <span *ngFor="let alt of data.altSpellings;let last = last">
+                    {{alt}}{{last? "":","}}
+                  </span>)
+                </span> , is a country in {{data.region}} <span *ngIf="data.subregion!=undefined">and sub-region
+                  {{data.subregion}}.</span>
+              </p>
+              <p *ngIf="data.borders.length">It is surrounded by {{data.borders.length}} countries</p>
+            </div>
+          </div>
+        </div>
+        <!-- Country Data -->
+        <div class="col-lg-6 col-12 p-3 f-flex flex-row content-info">
+          <div class="text-center heading">
+            <h1>{{data.name}}</h1>
+            <h4>{{data.nativeName}}</h4>
+          </div>
+          <div class="py-3 info">
+            <p *ngIf="data.capital"><b>CAPITAL: </b>{{data.capital}}</p>
+            <p><b>REGION: </b>{{data.region}}</p>
+            <p><b>SUB-REGION: </b>{{data.subregion}}</p>
+            <p><b>POPULATION: </b>{{data.population}}</p>
+            <p><b>AREA: </b>{{data.area}} km<sup>2</sup></p>
+            <p class="text-break"><b>CURRENCIES: </b>
+              <span class="currency" *ngFor="let cur of data.currencies;let last=last"
+                (click)="filterCountries(cur.code,'currency')">{{cur.name}} ({{cur.symbol}}){{last ? '' : ', '}}</span>
+            </p>
+            <p class="text-break"><b>LANGUAGE : </b>
+              <span [ngClass]="{'languageNotfound': x.iso639_1 == null}" class="language"
+                *ngFor="let x of data.languages;let last=last" (click)="filterCountries(x.iso639_1,'lang')">
+                {{x.name}} ({{x.nativeName}}{{last ? '' : ', '}})</span>
+            </p>
+
+            <p class="text-break" *ngIf="data.timezones"><b>TIME ZONE: </b>
+              {{data.timezones}}
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- if data not found -->
+<div class="container-fluid nodatafound-wrapper" *ngIf="noDataFound">
+
+  <!-- back -->
+  <app-back-button class="mb-2"></app-back-button>
+  <!-- No data -->
+  <div class="row mx-5 justify-content-center">
+    <div class="col-md-4 col-10 mt-4 nodata-img">
+      <img src="../../assets/image/nodata.png" alt="" class="w-100 h-100">
+    </div>
+    <div class="col-md-6 col-10 mt-4 px-0 text-center nodata-info">
+      <span class="font-weight-bold">Sorry, no match Found for {{country | uppercase}}</span>
+      <ul class="text-left mt-3 text-justify">
+        <li><i class="fa fa-check mb-2" aria-hidden="true"></i> Check the spelling of Keyword.</li>
+        <li><i class="fa fa-check" aria-hidden="true"></i> Try a similar or related Keyword</li>
+        <li><i class="fa fa-check" aria-hidden="true"></i> Search using other Keyword</li>
+        <li><i class="fa fa-check" aria-hidden="true"></i> Go Back to home</li>
+      </ul>
+    </div>
+  </div>
+
+</div>

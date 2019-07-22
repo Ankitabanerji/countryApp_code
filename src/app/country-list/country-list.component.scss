@@ -1,0 +1,84 @@
+.allCountries-wrapper {
+    .allCountries-heading {
+      color: white;
+      font-size: 2.5rem;
+      font-family: 'Special Elite',cursive;
+    }
+  }
+  
+  .card-columns {
+    column-count: 4;
+    .countrycard {
+      border-style: none;
+      border-radius: 6%;
+      overflow: hidden;
+      cursor: pointer;
+      .body {
+        cursor: default;
+        .country-title {
+          font-family: 'Special Elite', cursive;
+          font-size: 1.75rem;
+        }
+        .currency {
+          color: rgb(77, 179, 77);
+          &:hover {
+            color: white;
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+        .language {
+          color: rgb(77, 179, 77);
+          &:hover {
+            color: white;
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+        .languageNotfound:hover {
+          cursor: default;
+          text-decoration: none !important;
+        }
+        .readmore {
+          cursor: pointer;
+          span {
+            background:rgb(77, 179, 77);
+            border-radius: 11px;
+            font-size:1rem;
+          }
+          &:hover {
+          span {
+            background:rgb(69, 161, 69);
+          }
+        }
+        }
+      }
+    }
+    .countrycard:hover {
+      background: transparent!important;
+      box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.6), 0 6px 20px 0 rgba(255, 255, 255, 0.6);
+      color: white;
+    }
+  }
+  
+  @media screen and (max-width:960px) {
+    .allCountries-wrapper {
+      .allCountries-heading {
+        font-size: 2rem;
+      }
+      .body {
+        .country-title{
+          font-size: 1.25rem;
+        }
+      }
+    }
+    .card-columns {
+      column-count: 2;
+    }
+  }
+  
+  @media screen and (max-width:540px) {
+    .card-columns {
+      column-count: 1;
+    }
+  }
